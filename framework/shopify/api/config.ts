@@ -16,6 +16,7 @@ class Config {
 }
 
 const configWrapper = new Config({
+  //fetchApi is where you build the API call
   fetch: fetchApi,
   checkoutCookie: SHOPIFY_CHECKOUT_ID_COOKIE
 })

@@ -65,7 +65,10 @@ const normalizeLineItem = ({
   }
 }
 
+//Here we are destructuring "ImageConnection". Check "ImageConnection" in schema.d.ts
 const normalizeProductImages = ({edges}: {edges: Array<ImageEdge>}) =>
+  // Here I am destruturing Image and then
+  //I am creating an url alias for originalSrc
   edges.map(({node: { originalSrc: url, ...rest}}) => ({
     url: process.env.NEXT_PUBLIC_FRAMEWORK === "shopify_local" ?
     `/images/${url}` :
@@ -134,10 +137,12 @@ const normalizeProductVariants = ({ edges }: ProductVariantConnection) => {
 export function normalizeProduct(productNode: ShopifyProduct): Product {
   const {
     id,
+    //name is an alias
     title: name,
     handle,
     vendor,
     description,
+    //I am creating the imageConnection alias
     images: imageConnection,
     priceRange,
     options,
@@ -151,6 +156,8 @@ export function normalizeProduct(productNode: ShopifyProduct): Product {
     vendor,
     description,
     path: `/${handle}`,
+    //It will remove "\" from the beginning and the end. It will just get the name
+    // Ex: /cool-hat/ It will get just "cool-hat" Video: "Normmalize Product" 11:15min
     slug: handle.replace(/^\/+|\/+$/g, ""),
     images: normalizeProductImages(imageConnection),
     price: normalizeProductPrice(priceRange.minVariantPrice),

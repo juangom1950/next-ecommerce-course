@@ -7,7 +7,9 @@ import { ProductCard } from "@components/product"
 import { Grid, Hero, Marquee } from "@components/ui"
 
 export async function getStaticProps() {
+  //Here is where you attach the call to the API
   const config = getConfig()
+  //Here you fire the method call to fetch all products
   const products = await getAllProducts(config)
 
   return {

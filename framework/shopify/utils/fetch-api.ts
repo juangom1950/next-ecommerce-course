@@ -4,6 +4,7 @@ import {
 } from "@common/types/api"
 import { API_URL, STOREFRONT_TOKEN } from "@framework/const"
 
+// Video: "Specify Fetcher Return Type" 4:30min
 const fetchApi = async <T>({
   query,
   variables }: ApiFetcherOptions
@@ -19,9 +20,12 @@ const fetchApi = async <T>({
       variables
     })
   })
+  // This is error handling
   const { data, errors} = await res.json()
+  // Video: "Move fetch API" 6:20min
   // ?? is checking if left hand expression is null or undefined -> if it is go with right expression
   // || is checking if left hand expression is null, undefined, "", 0, false
+  // ex: const test = null || "Hello World" result would be "Hello World"
   if (errors) {
     throw new Error(errors[0].message ?? errors.message)
   }

@@ -7,6 +7,7 @@ import { UIProvider } from "@components/ui/context"
 
 const Noop: FC = ({children}) => <>{children}</>
 
+//This file will wrap all of your pages. This is specific of next.js
 function MyApp({Component, pageProps}: AppProps & {Component: {Layout: FC}}) {
   const Layout = Component.Layout ?? Noop
 
