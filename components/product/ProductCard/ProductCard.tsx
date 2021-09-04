@@ -9,9 +9,10 @@ interface Props {
   variant?: "simple" | "slim"
 }
 const placeholderImage = "/product-image-placeholder.svg"
+//Here I am expectingh props and I destruture them in {product, virant}
 const ProductCard: FC<Props> = ({product, variant = "simple"}) => {
-
   return (
+    
     <Link href={`/products/${product.slug}`}>
       <a className={s.root}>
         { variant === "slim" ?
@@ -25,7 +26,8 @@ const ProductCard: FC<Props> = ({product, variant = "simple"}) => {
               <Image
                 className={s.productImage}
                 alt={product.name ?? "Product image"}
-                src={product.images[0].url ?? placeholderImage}
+                src={"/images/" + product.images[0].url ?? placeholderImage}
+                //src={placeholderImage}
                 height={320}
                 width={320}
                 quality="85"
@@ -47,7 +49,7 @@ const ProductCard: FC<Props> = ({product, variant = "simple"}) => {
                 <Image
                   className={s.productImage}
                   alt={product.name ?? "Product image"}
-                  src={product.images[0].url ?? placeholderImage}
+                  src={"/images/" + product.images[0].url ?? placeholderImage}
                   height={540}
                   width={540}
                   quality="85"

@@ -9,7 +9,9 @@ const fetchApi = async <T>({
   query,
   variables }: ApiFetcherOptions
 ): Promise<ApiFetcherResults<T>> => {
-  const res = await fetch(API_URL!, {
+  //console.log("API: ", API_URL)
+  const API_URL_TEST = "http://localhost:4000/graphql"
+  const res = await fetch(API_URL_TEST!, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

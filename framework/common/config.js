@@ -9,10 +9,12 @@ const ALLOWED_FW = ["shopify", "bigcommerce", "shopify_local"]
 const FALLBACK_FW = "shopify"
 
 function withFrameworkConfig(defaultConfig = {}) {
+  
   //? is for in case of undefine it should not through any error. It will acept "undefined"
   let framework = defaultConfig?.framework?.name
 
   if (!framework) {
+    console.log("Framework: ", framework)
     throw new Error("The api framework is missing, please add a valid provider!")
   }
 

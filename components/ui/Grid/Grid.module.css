@@ -18,6 +18,10 @@
 }
 
 .layoutA {
+  /*I am targeting this arrays
+    1, 7, 13
+    5, 11, 17
+    And then applying this @screen lg*/
   & > *:nth-child(6n + 1),
   & > *:nth-child(6n + 5) {
 
@@ -28,6 +32,7 @@
 }
 
 .layoutB {
+  /* I am targeting the 2nd and 4th child */
   & > *:nth-child(6n + 2),
   & > *:nth-child(6n + 4) {
 

@@ -1,10 +1,11 @@
-
+/* Here we are importing the CSS variables */
 @import "./base.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* @layer components will put this class in the packet components */
 @layer components {
   .fit {
     min-height: calc(100vh - 88px)

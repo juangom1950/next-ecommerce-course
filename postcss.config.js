@@ -10,6 +10,8 @@ module.exports = {
 
 
 // just for testing!
+// Use this to generate the class that is in the main.css in main_Browser.css
+// 
 // module.exports = {
 //   plugins: [
 //     require("tailwindcss"),
