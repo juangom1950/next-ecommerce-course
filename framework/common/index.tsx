@@ -8,6 +8,8 @@ interface ApiProviderProps {
   hooks: ApiHooks
 }
 
+//Partial should make the properties on the ApiProviderContext as an optional ones.
+//ApiProviderContext is the value that it is going to return
 export const ApiContext = createContext<Partial<ApiProviderContext>>({})
 
 export const ApiProvider = ({
@@ -23,6 +25,7 @@ export const ApiProvider = ({
       checkoutCookie: config.checkoutCookie
     }
   }, [
+    //These are the dependencies of the useMemo hook
     config.fetch,
     config.checkoutCookie,
     hooks

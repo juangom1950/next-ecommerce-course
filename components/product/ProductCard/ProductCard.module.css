@@ -8,6 +8,7 @@
       transform: scale(0.99);
     }
 
+    /* Increase the image size when mouse hover over */
     & .productImage {
       transform: scale(1.15);
     }
@@ -38,6 +39,7 @@
   @apply absolute inset-0 z-0;
   background-color: #212529;
 
+  /* Add some image in the background of the image */
   &:before {
     @apply transition-transform duration-500 block w-full h-full bg-repeat-space;
     content: "";
@@ -56,6 +58,7 @@
 
 .productTitle {
   @apply font-bold;
+  /* space at the top of the letters */
   line-height: 2.2em;
 
   & span {

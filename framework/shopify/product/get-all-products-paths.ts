@@ -5,6 +5,7 @@ import getAllProductsPathsQuery from "@framework/utils/queries/get-all-products-
 
 
 type ReturnType = {
+  //Pick is a special type where you can specify what property do you want to return from Product
   products: Pick<Product, "slug">[]
 }
 

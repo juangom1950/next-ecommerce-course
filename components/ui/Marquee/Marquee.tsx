@@ -13,12 +13,14 @@ const Marquee: FC<Props> = ({children, variant = "primary"}) => {
   const rootClassName = cn(
     s.root,
     {
+      //This will apply only if the viriant that we are getting from the prop is secundary
       [s.secondary]: variant === "secondary"
     }
   )
 
   return (
     <div className={rootClassName}>
+      {/* 80 is the number of pixels from where the slider should start */}
       <Ticker offset={80}>
         { () =>
           <div className={s.container}>

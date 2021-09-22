@@ -8,8 +8,8 @@ import {
 
 import { shopifyHooks } from "./hooks"
 import { getConfig } from "./api/config"
-const config = getConfig()
 
+const config = getConfig()
 
 interface ShopifyApiProviderProps {
   children: ReactNode | ReactNode[]

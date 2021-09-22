@@ -12,7 +12,7 @@
 
 .container {
   @apply flex flex-row;
-
+  /* This would target every children of the container */
   & > * {
     @apply flex-1 px-16 py-4 relative;
   }

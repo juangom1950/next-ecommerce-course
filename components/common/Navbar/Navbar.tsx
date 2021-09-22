@@ -16,6 +16,7 @@ const Navbar: FC = () => {
               NEXT_STORE
             </a>
           </Link>
+          {/* I will apply left margin to the child items except the 1st one */}
           <nav className="ml-6 space-x-6">
             <Link href="/">
               <a className={s.link}>All</a>

@@ -34,6 +34,7 @@ export const handler: SWRHook<UseCartHookDescriptor> = {
     options,
     input: { checkoutId }
   }) {
+    debugger
     let checkout: Checkout
 
     if (checkoutId) {
@@ -51,14 +52,16 @@ export const handler: SWRHook<UseCartHookDescriptor> = {
     const cart = checkoutToCart(checkout)
     return cart
   },
+  //Here we are destructuring the context
   useHook: ({useData}) => () => {
+    debugger
     const { checkoutCookie } = useApiProvider()
     const result = useData({
       swrOptions: {
         revalidateOnFocus: false
       }
     })
-
+    debugger
     if (result.data?.completedAt) {
       Cookies.remove(checkoutCookie)
     }

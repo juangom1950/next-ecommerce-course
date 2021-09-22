@@ -15,12 +15,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const { products } = await getAllProductsPaths(config)
 
   return {
+    //Here I am just returning the paths. params: {slug: "cool-hat"}
     paths: products.map(p => ({params: {slug: p.slug}})),
+    //Through and error when you try to navigate to a page that doesn't exist
     fallback: false
   }
 }
 
-// provide product spefici data to the page
+// provide product specific data to the page
+//You get the params from the props
 export const getStaticProps = async ({
   params }: GetStaticPropsContext<{slug: string}>
 ) => {
@@ -41,9 +44,18 @@ export const getStaticProps = async ({
 export default function ProductSlug({
   product }: InferGetStaticPropsType<typeof getStaticProps>
 ) {
+  console.log(JSON.stringify(product, null, 2))
 
   return (
     <>
+      {/* {JSON.stringify(product?.images, null, 2)} */}
+
+      {/* {product?.name}
+      {product?.slug}
+      {product?.path}
+      {product?.price.value}
+      {product?.price.currencyCode} */}
+
       { product && <ProductView product={product} />}
     </>
   )

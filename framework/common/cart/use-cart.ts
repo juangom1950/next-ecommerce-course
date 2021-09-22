@@ -9,9 +9,12 @@ export type UseCart<
 > = ReturnType<H["useHook"]>
 
 const useCart: UseCart = () => {
+  //This useHook calls useCart which returns an object that has: fetcherOptions, fetcher and useHook
+  //Check: framework>common>types Hooks>ApiHooks
   const hook = useHook((hooks: ApiHooks) => hooks.cart.useCart)
   const { checkoutCookie } = useApiProvider()
 
+  debugger
   const fetcherWrapper: typeof hook.fetcher = (context: any) => {
     context.input.checkoutId = Cookies.get(checkoutCookie)
     return hook.fetcher(context)

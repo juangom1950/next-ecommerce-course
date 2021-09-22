@@ -1,6 +1,7 @@
 
 
 .root {
+  /* md is medium size screen */
   @apply flex flex-row md:py-6;
 }
 

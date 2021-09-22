@@ -17,6 +17,7 @@ const ProductSlider: FC = ({children}) => {
   return (
     <div className={s.root}>
       <div
+        //By default sliderRef is HTMLElement, but it is expectint HTMLDivElement
         ref={sliderRef as React.RefObject<HTMLDivElement>}
         className="keen-slider h-full transition-opacity">
         <button

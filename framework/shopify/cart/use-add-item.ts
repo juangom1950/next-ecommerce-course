@@ -27,6 +27,7 @@ export const handler: MutationHook<AddItemHookDescriptor> = {
   fetcherOptions: {
     query: checkoutLineItemsAddMutation
   },
+  //I am getting back this values fetch, options, input
   fetcher: async ({fetch, options, input}) => {
 
     const variables = {
@@ -39,7 +40,10 @@ export const handler: MutationHook<AddItemHookDescriptor> = {
       ]
     }
 
+    debugger
+    //Here we are sending data to the server
     const { data } = await fetch({
+      //Object destructuring options I can get: "query" and "variables"
        ...options,
        variables
     })
@@ -47,9 +51,10 @@ export const handler: MutationHook<AddItemHookDescriptor> = {
     const cart = checkoutToCart(data.checkoutLineItemsAdd.checkout)
     return cart
   },
+  //This fetch comes from useMutationHooks. Famework>common>utils>use-hook.ts
   useHook: ({fetch}) => () => {
     const { mutate: updateCart } = useCart()
-
+    debugger
     return async (input) => {
       const response = await fetch(input)
       await updateCart(response, false)

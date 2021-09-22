@@ -24,6 +24,7 @@ const Swatch: FC<Props> = ({
   label = label?.toLowerCase()
   variant = variant?.toLocaleLowerCase()
 
+  //It would allow to see the classes conditional
   const rootClassName = cn(
     s.root,
     {

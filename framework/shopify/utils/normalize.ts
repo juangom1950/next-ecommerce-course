@@ -77,6 +77,7 @@ const normalizeProductImages = ({edges}: {edges: Array<ImageEdge>}) =>
   ))
 
 const normalizeProductPrice = ({currencyCode, amount}: MoneyV2) => ({
+  //+ sign will transform from string to number
   value: +amount,
   currencyCode
 })
@@ -94,7 +95,8 @@ const normalizeProductOption = ({
       let output: any = {
         label: value
       }
-
+      //This match: color, colour,
+      //gi menas case insensitive
       if (displayName.match(/colou?r/gi)) {
         output = {
           ...output,
@@ -121,6 +123,7 @@ const normalizeProductVariants = ({ edges }: ProductVariantConnection) => {
       price: +priceV2.amount,
       listPrice: +compareAtPriceV2?.amount,
       requiresShipping: true,
+      //Estructuring SelectOptions
       options: selectedOptions.map(({name, value}: SelectedOption) => {
         const option = normalizeProductOption({
           id,

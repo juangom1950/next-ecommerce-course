@@ -26,6 +26,7 @@ const ProductView: FC<Props> = ({ product }) => {
   const addToCart = async () => {
     try {
       const item = {
+        //String wold ensure that this is string
         productId: String(product.id),
         variantId: String(variant ? variant.id : product.variants[0].id),
         quantity: 1
@@ -56,10 +57,12 @@ const ProductView: FC<Props> = ({ product }) => {
           </div>
           <ProductSlider>
             { product.images.map(image =>
+               //console.log("Image View: ", image.url)
+               //Remember that you need to add a key whenver you are iterating through items
               <div key={image.url} className={s.imageContainer}>
                 <Image
                   className={s.img}
-                  src={image.url}
+                  src={"/images/" + image.url}
                   alt={image.alt}
                   width={1050}
                   height={1050}
@@ -70,13 +73,17 @@ const ProductView: FC<Props> = ({ product }) => {
           </ProductSlider>
         </div>
         <div className={s.sidebar}>
+          {/* Check what we are giving back from product.options */}
+          {/* { JSON.stringify(product.options) } */}
           <section>
             { product.options.map(option =>
               <div key={option.id} className="pb-4">
                 <h2 className="uppercase font-medium">{option.displayName}</h2>
                 <div className="flex flex-row py-4">
                   { option.values.map(optValue => {
+                    //extracting here the active choice: size: "l", "s", "m" or color: "#ffffff"
                     const activeChoice = choices[option.displayName.toLowerCase()]
+                    //console.log(activeChoice);
                     return (
                       <Swatch
                         key={`${option.id}-${optValue.label}`}
@@ -85,6 +92,7 @@ const ProductView: FC<Props> = ({ product }) => {
                         variant={option.displayName}
                         active={optValue.label.toLowerCase() === activeChoice}
                         onClick={() => {
+                          //Get the actual choices pluss the new choice
                           setChoices({
                             ...choices,
                             [option.displayName.toLowerCase()]: optValue.label.toLowerCase()

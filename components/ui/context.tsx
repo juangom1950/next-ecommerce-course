@@ -15,6 +15,7 @@ export interface StateValues {
   isSidebarOpen: boolean
 }
 
+//This is a default state of the StateModifiers
 const stateModifiers = {
   openSidebar: () => {},
   closeSidebar: () => {}
@@ -31,6 +32,7 @@ const UIContext = createContext<State>({
 
 type Action = { type: "OPEN_SIDEBAR" | "CLOSE_SIDEBAR" }
 
+//This takes the previous state and update it with the new state
 function uiReducer(state: StateValues, action: Action) {
   switch(action.type) {
     case "OPEN_SIDEBAR": {
@@ -51,6 +53,10 @@ function uiReducer(state: StateValues, action: Action) {
 export const UIProvider: FC = ({children}) => {
   const [state, dispatch] = useReducer(uiReducer, initialState)
 
+  // const openSidebar = () => alert("Opening Sidebar!")
+  // const closeSidebar = () => alert("Closing Sidebar!")
+
+  //This is going to be distpatch when this function gets called
   const openSidebar = () => dispatch({type: "OPEN_SIDEBAR"})
   const closeSidebar = () => dispatch({type: "CLOSE_SIDEBAR"})
 

@@ -5,14 +5,19 @@ import { ApiHooks, Hook } from "@common/types/hooks"
 import { MutationHook } from "@common/types/hooks"
 import useSWR from "swr"
 
+//This function is responsible for giving me the hook from the provider
+//apiHooks is the hook that useApiProvider() is going to return
 export const useHook = <H>(fn: (apiHooks: ApiHooks) => H) => {
+  //Here we are getting this particular hook
   const { hooks } = useApiProvider()
+  //This makes the function to execute from where it is coming from
   return fn(hooks)
 }
 
 export const useMutationHook = (
   hook: MutationHook
 ) => {
+  //fetcher should be doing the request to GraphQL
   const { fetcher } = useApiProvider()
 
   return hook.useHook({

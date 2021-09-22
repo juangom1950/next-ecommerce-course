@@ -15,15 +15,18 @@ interface Props {
 const Sidebar: FC<Props> = ({ children, isOpen, onClose }) => {
   const ref = useRef() as React.MutableRefObject<HTMLDivElement>
 
+  //We use useEffect because it is done only in the browser
+  //It is executed only if "isOpen" changes
   useEffect(() => {
     if (ref.current) {
+      //console.log(ref.current)
       if (isOpen) {
         disableBodyScroll(ref.current)
       } else {
         enableBodyScroll(ref.current)
       }
     }
-
+    //This is a clean up function and is executed only when the component is destroy
     return () => {
       clearAllBodyScrollLocks()
     }
